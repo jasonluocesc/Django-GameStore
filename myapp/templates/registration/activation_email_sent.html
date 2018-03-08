@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Activation email sent{% endblock %}
+{% block metadescription%}Activation email sent{% endblock metadescription %}
+{% block header %}
+{% endblock %}
+{% block content %}
+{% load static %}    
+<div id="page-logout" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<div id="logout-text">
+<p>
+Confirmation message was sent. Check your email, please!
+</p>
+</div>
+    
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block metadescription%}Login to the World Games{% endblock metadescription %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div id="page-login" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<form method="post" id="login" class="webform-processed">
+{% csrf_token %}
+<div class="wrapper">
+{% load widget_tweaks %}
+{% if form.errors %}
+<div class="form-errors-style">
+   {{ form.non_field_errors }}
+   {% for field in form %}
+           {{ field.errors }}
+   {% endfor %}
+</div>
+{% endif %}
+{% render_field form.username class="login-input" size="60" placeholder="Username" %}
+{% render_field form.password class="login-input" size="60" placeholder="Password" %}
+<div class="wrapper-login-login">
+<input type="submit" value="Login" class="form-submit button special">
+</div>
+<div class="wrapper-login-signup one">
+    <a id="facebook-button" class="button special" href="{% url 'social:begin' 'facebook' %}" title="Facebook"><b>Facebook login</b></a>
+</div>
+<p>Don't have an account yet?</p>
+<div class="wrapper-login-signup">
+<a href="/accounts/signup" class="button alt" title="Sign up">Sign Up</a>
+</div>
+</div>
+</form>
+</div>
+</div>
+{% endblock %}

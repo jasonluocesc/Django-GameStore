@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+    {% block title %}Accept Your Purchase{% endblock %}
+    {% block metadescription%}Welcome to World Games!{% endblock metadescription %}
+{% block content %}
+
+<div id="page-purchasing" class="page clearfix">
+<div id="content" class="page-purchasing">
+    <h1>You are purchasing the game {{game.name}}</h1>
+<p>The price is <b>{{game.price}}</b></p>
+<p>Your are going to be redirected to bank service by clicking the button below</p>
+
+<form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+    <input type="hidden" name="pid" value="{{pid}}" />
+    <input type="hidden" name="sid" value="{{sid}}" />
+    <input type="hidden" name="success_url"
+            value="http://{{site}}/payment/success/{{game.id}}/" />
+    <input type="hidden" name="cancel_url"
+            value="http://{{site}}/payment/cancel/{{game.id}}/" />
+    <input type="hidden" name="error_url"
+            value="http://{{site}}/payment/error/{{game.id}}/" />
+    <input type="hidden" name="checksum"
+            value="{{checksum}}" />
+
+    <input type="hidden" name="amount" value="{{amount}}" />
+    <input name="dev" type="hidden" value=True />
+    <input type="submit" id="accept-pay" class="form-submit button special" value="Accept Payment"/>
+    <a id="cancel-pay" href="/game/{{game.id}}" class="form-submit button alt" title="Cancel Payment and return to game">Return to game</a>
+</form>
+</div>
+</div>
+{% endblock %}

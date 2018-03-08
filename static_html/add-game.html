@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Add a game</title>
+  <meta name="description" content="Add a game">
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+<header class="header" id="header">
+<div class="headerwrapper clearfix">
+<div id="header-logo" class="clearfix">
+<a class="logo-link" href="/"><img src="assets/css/images/logo.png" alt="World games logo" class="logo-top" /></a>
+<a class="logo-link" href="/"><h2>World Games</h2></a>
+</div>
+<div id="header-right" class="clearfix">
+<a class="logout-link" href="/logout">Log out</a>
+<p>Welcome, Username!</p>
+</div>
+</div>
+</header>
+<div id="page-edit-game" class="page">
+<div id="content" class="page-edit-game">
+<h1>Add one more game</h1>
+<form accepted-charset="UTF-8" method="post" id="add-game-form" class="webform-profile">
+<div class="wrapper">
+<input type="text" name="game_name" class="game-input" size="60" placeholder="Game's name" autocomplete="OFF">   
+<textarea rows="4" cols="50" placeholder="Game's description"></textarea> 
+<p><b>Add a game's photo here</b></p>
+<input type="file" id="game-photo" name="file">
+<label for="game-photo" class="clearfix">Choose a photo to upload</label>
+<input type="text" name="game_price" class="game-input" size="60" placeholder="Game's Price" autocomplete="OFF">    
+<p><b>Add a game's url here</b></p>
+<input type="url" name="game_url" class="game-input" size="60" placeholder="Game's URL" autocomplete="OFF">   
+<input type="text" name="change_log" class="game-input" size="60" placeholder="Change log for url" autocomplete="OFF">
+    
+<div class="wrapper-profile">
+<input type="submit" value="Add game" class="form-submit button special">
+</div>
+    
+</div>
+</form>
+ 
+</div>
+</div>
+
+</body>
+</html>

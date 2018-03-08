@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Payment already done{% endblock %}
+{% block metadescription%}Payment already done{% endblock metadescription %}
+{% block header %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="page-logout" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<div id="logout-text">
+<p>
+You have already bought this game!
+</p>
+<a href="/" title="To the Game" class="to-front-page">To Front page</a>
+<br/>
+<a href="/game/{{gameid}}" title="To the Game" class="to-front-page">To Your game</a>
+</div>
+</div>
+</div>
+{% endblock %}

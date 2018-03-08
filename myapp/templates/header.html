@@ -1,0 +1,24 @@
+{% load static %}
+<header class="header" id="header">
+<div class="headerwrapper clearfix">
+<div id="header-logo" class="clearfix">
+<a class="logo-link" href="/" title="Front page"><img src="{% static 'assets/css/images/logo.png' %}"  alt="World games logo" class="logo-top" /></a>
+<a class="logo-link" href="/" title="Front page"><h2>World Games</h2></a>
+</div>
+<div id="header-right" class="clearfix">
+{% if user.is_authenticated %}
+
+<a class="logout-link zero" href="/accounts/logout">Log out</a>
+    <p><b>Welcome, <a href="/" title="Your profile" class="dashboard-link">{{user.username}}</a></b></p>
+
+{% else %}
+
+<a class="logout-link one" href="/accounts/signup" title="Sign Up">Sign up </a>
+<p>or</p>
+<a class="logout-link two" href="/accounts/login?next={{ request.path }}" title="Login">Login</a>
+<p><b>Welcome!</b></p>
+
+{% endif %}
+</div>
+</div>
+</header>

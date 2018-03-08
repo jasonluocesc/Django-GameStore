@@ -1,0 +1,39 @@
+{% load static %}
+<h1>Your dashboard</h1>
+<div id="gamer-top" class="clearfix">
+<div id="gamer-photo">
+<img src="{{user.profile.photo.url}}" alt="Profile photo" onerror="this.src='{% static 'assets/css/images/default-user.png' %}'" onabort="this.scr='{% static 'assets/css/images/default-user.png' %}'" />
+</div>
+<div id="gamer-info">
+<div id="gamer-info-align">
+<p><b>Full name:</b> {{user.first_name}} {{user.last_name}}</p>
+<p><b>Email:</b> {{user.email}}</p>
+
+{% if user.profile.is_developer %}
+
+<p><b>Profit:</b> {{user.profile.profit}}</p>
+<p id="token"><b>Secret Token:</b><a id="show-button" class="token-link">Show!</a></p>
+
+{% endif %}
+</div>
+</div>
+</div>
+<div id="gamer-description">
+<p>{{user.profile.self_description}}</p>
+</div>
+<a id="edit-profile-link" href="/accounts/profile" title="Edit your profile" class="button alt">Edit your profile</a>
+{% if user.profile.is_developer %}
+
+<a id="add-game-link" href="/addgame" title="Add one more game" class="form-submit button special">Add one more game</a>
+<a id="statistics-link" href="/stat/" title="Statistics" class="button alt">Statistics</a>
+
+{% endif %}
+
+<script>
+  $("#show-button").click(
+    function(){
+      document.getElementById("token").innerHTML="<span id='hide'><b>Secret Token:</b>  <span>{{token}} </span></span>";
+    }
+  );
+
+</script>

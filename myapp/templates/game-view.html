@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{game.name}}{% endblock %}
+{% block metadescription%}Welcome to World Games!{% endblock metadescription %}
+{% block meta %}
+<meta property="og:url" content="https://{{request.get_host}}{{ request.path }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{game.name}}" />
+<meta property="og:description" content="Come to play {{game.name}} on World Games and challenge the highest score with me!" />
+<meta property="og:image" content="{{game.image.url}}" />
+{% endblock %}
+{% block content %}
+{% load static %}
+{% load ratings %}
+
+<script>
+  var id = {{ game.id }}
+</script>
+<script src="{% static 'assets/js/setting.js' %}"></script>
+<div id="page-game-{{game.id}}" class="page">
+<div id="content" class="page-game">
+<h1>{{game.name}}</h1>
+<div class="wrapper clearfix">
+<div id="play-game-frame">
+<iframe id="playframe" src='/play/{{game.id}}/' class="clearfix"></iframe>
+{% if allowed == "customer" or allowed == "developer" %}
+<div class="hidden-button clearfix">
+<button class="button alt">Fullscreen</button>
+    <div class="info"><p><b>Press Esc to close the fullscreen mode </b></p></div></div>
+  <div class="error"></div>
+{% endif %}
+
+<div id="wrapper-p">
+<div id="current-size"></div>
+<div id="best-size"></div>
+</div>   
+</div>
+
+<div class="game-info">
+<div id="game-photo">
+<img src="{% static 'assets/css/images/game-icon-2.png' %}" alt="Profile photo">
+</div>
+<div id="game-text-info">
+<h2>Game Info</h2>
+<div id="game-info-price"><p><b>Price: </b>{{game.price}}</p></div>
+<div id="game-info-devby"><p><b>Developed by</b> {{game.developer.username}}</p></div>
+<div id="game-info-description"><p>{{game.description}}</p></div>
+    <div id="game-info-rating"><p><b>Rating:</b></p>
+{% if allowed == "customer" %}
+    <div>{% ratings game %}</div>
+{% else %}
+    <div>{% ratings game read_only=True %}</div>
+<div id="game-info-scores"><p>Only customers can rate games.</p></div>
+{% endif %}
+</div>
+{% if allowed == "not_purchased" or allowed == "anonymous" %}
+    <a id="buy-game" href="/purchase/{{game.id}}/" title="buy the game" class="form-submit button special">Buy!</a>
+{% else %}
+  <div id="game-info-scores"><p><b>Your highest score:</b> {{score}}</p></div>
+  <iframe src="https://www.facebook.com/plugins/share_button.php?href=https://{{request.get_host}}{{ request.path }}&layout=button_count&size=large&mobile_iframe=true&appId=801105136757003&width=106&height=28" width="106" height="28" style="border:none;overflow:hidden" scrolling="no" allowTransparency="true"></iframe>
+  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Come to play {{game.name}} on World Games and challenge the highest score with me!" data-size="large">
+  Tweet</a>
+{% endif %}
+
+</div>
+</div>
+</div>
+
+<div id="table-of-scores" class="clearfix">
+<h2>Table of scores</h2>
+<div class="scores-wrapper one clearfix">
+<div class="game-scores">
+<p><b id="score-0">0</b></p>
+</div>
+<div class="user-scores">
+<p id="name-0">Waiting for challenge!</p>
+</div>
+</div>
+
+<div class="scores-wrapper two clearfix">
+<div class="game-scores">
+<p><b id="score-1">0</b></p>
+</div>
+<div class="user-scores">
+<p id="name-1">Waiting for challenge!</p>
+</div>
+</div>
+
+<div class="scores-wrapper three clearfix">
+<div class="game-scores">
+<p><b id="score-2">0</b></p>
+</div>
+<div class="user-scores">
+<p id="name-2">Waiting for challenge!</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="{% static 'assets/js/fullscreen.js' %}"></script>
+{% endblock %}

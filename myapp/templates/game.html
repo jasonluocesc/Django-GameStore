@@ -1,0 +1,22 @@
+{% load static %}
+{% load ratings %}
+<div id="view-row-{{forloop.counter}}" class="view-row">
+<div>
+<a href="/game/{{game.id}}" title="{{game.name}}"><img src="{{game.image.url}}" alt="{{game.name}}" onerror="this.src='{% static 'assets/css/images/default-game-n.png' %}'" onabort="this.scr='{% static 'assets/css/images/default-game-n.png' %}'" /></a>
+</div>
+<a href="/game/{{game.id}}" title="{{game.name}}"><h3>{{game.name}}</h3></a>
+
+{% if user.is_authenticated %}
+{% if user == game.developer %}
+    <p><b>Highest Score:</b> {{game.highest_score}}</p>
+    <p><b>{{game.sales}}</b> copies sold</p>
+{% else %}
+    <p><b>Highest Score:</b> {{game.highest_score}}</p>
+{% endif %}
+{% endif %}
+<a href="/game/{{game.id}}" title="Play game" class="link-play-game">Play the game</a>
+{% if user == game.developer %}
+    <a href="/edit/{{game.id}}" title="Edit game" class="link-edit-game">Edit game</a>
+{% endif %}
+
+</div>

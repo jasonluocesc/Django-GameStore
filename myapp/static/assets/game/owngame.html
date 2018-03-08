@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My game</title>
+  <meta name="description" content="Rock, paper, scissors, lizard, or Spock">
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+<div id="page-mygame" class="page">
+<div id="content" class="mygame">
+<h1>Rock, paper, scissors, lizard, or Spock</h1>
+<p>Choose rock, paper, scissors, lizard, or Spock</p>
+
+<input type="button" id="rock" class="game-button alt" value="Rock" onclick="GetButtonValue(this.id)">
+<input type="button" id="paper" class="game-button alt" value="Paper" onclick="GetButtonValue(this.id)">
+<input type="button" id="scissors" class="game-button alt" value="Scissors" onclick="GetButtonValue(this.id)">
+<input type="button" id="lizard" class="game-button alt" value="Lizard" onclick="GetButtonValue(this.id)">
+<input type="button" id="spock" class="game-button alt" value="Spock" onclick="GetButtonValue(this.id)">
+<br>
+<div class="wrapper">
+    <p>What do you want to do?</p>
+    <button id="submit_score" class="special">Submit score</button>
+      <button id="save" class="game-button alt">Save</button>
+      <button id="load" class="game-button alt">Load</button>
+</div>
+  <div>
+      <p>Total play time is <span id="playtime"><b>0</b></span></p>
+  </div>
+  <div>
+      <p>Total win time is <span id="wintime"><b>0</b></span></p>
+  </div>
+
+<p id="user-choice"></p>
+<p id="computer-choice"></p>
+<p id="game-result"></p>
+
+
+</div>
+</div>
+<script src="jquery.min.js"></script>
+<script src="owngame.js"></script>
+
+</body>
+</html>

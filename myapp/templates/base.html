@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    <meta charset="utf-8">
+    <title>{% block title%}Default title{% endblock title %}</title>
+    <meta name="description" content="{% block metadescription%}{% endblock metadescription %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}{% endblock meta %}
+    {% block rating_style %}{% endblock rating_style %}
+</head>
+<body>
+{% block header %}
+{% include "header.html" %}
+{% endblock %}
+{% block content %}
+{% endblock content %}
+</body>
+</html>

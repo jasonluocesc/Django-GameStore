@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Add a game{% endblock %}
+{% block metadescription%}Add a game{% endblock metadescription %}
+
+{% block content %}
+{% load static %}
+<div id="page-add-game" class="page">
+<div id="content" class="page-edit-game">
+<h1>Add one more game</h1>
+<form method="post" id="add-game-form" class="webform-profile" enctype="multipart/form-data">
+{% csrf_token %}
+{% load widget_tweaks %}
+<div class="wrapper">
+{% if form.errors %}
+<div class="form-errors-style">
+   {% for field in form %}
+           {{ field.errors }}
+   {% endfor %}
+</div>
+{% endif %}
+{% render_field form.name class="game-input" size="60" placeholder="Game name" %}
+{% render_field form.description rows="4" cols="50" placeholder="Game description" %}
+
+{% render_field form.price class="game-input" type="number" step="0.01" size="60" placeholder="Game Price" %}
+<p><b>Add a game's url here</b></p>
+{% render_field form.url class="game-input" size="60" placeholder="Game URL" %}
+<p><b>Add a game's picture here</b></p>
+
+<div class="profile-photo-img"><img id="add-game" src="{% static 'assets/css/images/default-game-n.png' %}" alt="Game image"/></div>
+<input id="uploadFile" type="text" placeholder="File path" class="profile-input" size="60" disabled="disabled" />
+<input type="file" id="game-profile-img" name="image" class="game-input game-profile-img" />
+<label for="game-profile-img" class="clearfix">Choose a file</label>
+
+
+<div class="wrapper-profile">
+<input type="submit" value="Add game" class="form-submit button special">
+</div>
+
+</div>
+</form>
+
+</div>
+</div>
+
+<script>
+
+document.getElementById("game-profile-img").onchange = function () {
+    document.getElementById("uploadFile").value = this.files[0].name;
+};
+</script>
+{% endblock %}

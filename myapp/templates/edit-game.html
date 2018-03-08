@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Edit game{% endblock %}
+{% block metadescription%}Edit game{% endblock metadescription %}
+{% block content %}
+{% load static %}
+<div id="page-edit-game" class="page clearfix">
+<div id="content" class="page-edit-game">
+<form method="post" id="edit-game-form" class="webform-profile" enctype="multipart/form-data">
+<h1>Edit {{game.name}} </h1>
+{% csrf_token %}
+{% load widget_tweaks %}
+{% if success %}
+    <div id="success-submission">
+    <p>{{ success }}</p>
+    </div>
+{% endif %}
+{% if form.errors %}
+<div class="form-errors-style">
+   {% for field in form %}
+           {{ field.errors }}
+   {% endfor %}
+</div>
+{% endif %}
+
+<div class="wrapper">
+<p><b>Modify Description</b></p>
+{% render_field form.description rows="4" cols="50" placeholder="Game description" %}
+
+<div id="pic-wrapper">
+<p><b>Add a new game's photo here</b></p>
+<div class="profile-photo-img"><img src="{{game.image.url}}" alt="Game image" onerror="this.src='{% static 'assets/css/images/default-game-n.png' %}'" onabort="this.scr='{% static 'assets/css/images/default-game-n.png' %}'" /></div>
+<input id="uploadFile" type="text" placeholder="File path" class="profile-input" size="60" disabled="disabled" />
+<input type="file" id="game-photo" name="image" class="game-input game-profile-img" />
+<label for="game-photo" class="clearfix">Choose a file</label>
+</div>
+
+<p><b>Modify Price</b></p>
+{% render_field form.price class="game-input" size="60" placeholder="Game Price" %}
+<p><b>Modify URL</b></p>
+{% render_field form.url class="game-input" size="60" placeholder="Game URL" %}
+
+<div class="checkbox-wrapper-game">
+<p><b>You can delete your game from search by unclicking the checkbox. Users will not be able to buy it</b></p>
+{% render_field form.valid id="gamer-checkbox" class="form-checkbox profile-checkbox one" %}
+<label class="option" for="gamer-checkbox">{{game.name}} is released</label>
+</div>
+
+<div class="wrapper-profile">
+<input id="edit-game-submit" type="submit" value="Submit" class="form-submit button special" />
+<a href="/" class="button alt" title="To Front page">Your Dashboard</a>
+</div>
+
+</div>
+</form>
+
+</div>
+</div>
+<script>
+
+document.getElementById("game-photo").onchange = function () {
+    document.getElementById("uploadFile").value = this.files[0].name;
+};
+</script>
+{% endblock %}

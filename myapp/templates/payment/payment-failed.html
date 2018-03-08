@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Payment failed{% endblock %}
+{% block metadescription%}Payment failed{% endblock metadescription %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div id="page-logout" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<div id="logout-text" class="red">
+<p>
+Payment failed! Please try again.
+</p>
+<a href="/" title="To Front page" class="red-link">To Front page</a>
+<br />
+<a href="/game/{{gameid}}" title="To the Game" class="red-link">Try purchasing again</a>
+</div>
+
+</div>
+</div>
+{% endblock %}

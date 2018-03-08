@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+{% block metadescription%}Sign up to the World Games{% endblock metadescription %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% load static %}      
+    
+<div id="page-signup" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<form method="post" id="signup" class="webform-processed">
+{% csrf_token %}
+<div class="wrapper">
+<h3>Sign up here</h3>
+{% load widget_tweaks %}
+{% if form.errors %}
+<div class="form-errors-style">
+   {% for field in form %}
+           {{ field.errors }}
+   {% endfor %}
+</div>
+{% endif %}
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input username">{% render_field form.username class="login-input" size="60" placeholder="Username" %}
+<div class="tooltiptext">{{form.username.help_text}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input password1">{% render_field form.password1 class="login-input" size="60" placeholder="Password" %}
+<div class="tooltiptext">{{form.password1.help_text|safe}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input password2">{% render_field form.password2 class="login-input" size="60" placeholder="Password Confirmation" %}
+<div class="tooltiptext">{{form.password2.help_text}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input email">{% render_field form.email class="login-input" size="60" placeholder="Email" %}
+<div class="tooltiptext">{{form.email.help_text}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input fst-name">{% render_field form.first_name class="login-input" size="60" placeholder="First Name" %}
+<div class="tooltiptext">{{form.first_name.help_text}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input last-name">{% render_field form.last_name class="login-input" size="60" placeholder="Last Name" %}
+<div class="tooltiptext">{{form.last_name.help_text}}</div>
+</div></div>
+
+<div class="signup-checkbox-tooltip"><div class="tooltip input desc">{% render_field form.self_description rows="4" cols="50" class="login-input" %}
+<div class="tooltiptext">{{form.self_description.help_text}}</div>
+</div></div>
+
+
+<div class="signup-checkbox clearfix">
+<div class="signup-checkbox-tooltip"><p class="tooltip no-input"><b>I want to be a...</b>
+<span class="tooltiptext">You can be a gamer or both a gamer and a developer</span>
+</p></div>
+
+<div class="checkbox-wrapper">
+{% render_field form.is_gamer class="form-checkbox signup-checkbox one" onclick="return false;"%}
+<label class="option" for="{{form.is_gamer.id_for_label}}">Gamer</label>
+</div>
+<div class="checkbox-wrapper">
+{% render_field form.is_developer class="form-checkbox signup-checkbox two" %}
+<label class="option" for="{{form.is_developer.id_for_label}}">Developer</label>
+</div>
+</div>
+
+<div class="wrapper-login-login">
+<input type="submit" value="Sign up" class="form-submit button special">
+</div>
+
+<p><b>Already have an account?</b></p>
+<div class="wrapper-login-signup">
+<a href="/accounts/login" class="button alt" title="Login">Login</a>
+</div>
+</div>
+</form>
+
+
+</div>
+</div>
+
+{% endblock %}

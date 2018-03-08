@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block metadescription%}Profile Settings{% endblock metadescription %}
+{% block content %}
+{% load static %}
+<div id="page-profile-settings" class="page">
+<div id="content" class="profile-settings">
+<h1>{% block title %}Profile's Settings{% endblock %}</h1>
+<form method="post" id="form-settings" class="webform-profile" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="wrapper">
+<h3>Change your account details here</h3>
+{% load widget_tweaks %}
+
+{% if success %}
+    <div id="success-submission">
+    <p>{{ success }}</p>
+    </div>
+{% endif %}
+
+<b>{{form.first_name.label_tag}}</b>
+{% render_field form.first_name class="profile-input" size="60" %}
+<b>{{form.last_name.label_tag}}</b>
+{% render_field form.last_name class="profile-input" size="60" %}
+<b>{{form.self_description.label_tag}}</b>
+{% render_field form.self_description rows="4" cols="50" class="profile-input" size="60" %}
+<p><b>You can add a profile photo here</b></p>
+
+
+<div class="profile-photo-img"><img src="{{user.profile.photo.url}}" alt="Profile photo" onerror="this.src='{% static 'assets/css/images/default-user.png' %}'" onabort="this.scr='{% static 'assets/css/images/default-user.png' %}'" /></div>
+<input id="uploadFile" type="text" placeholder="File path" class="profile-input" size="60" disabled="disabled" />
+{% render_field form.photo id="profile-file" class="profile-input" type="file" %}
+<label for="profile-file" class="clearfix">Choose a file</label>
+
+
+<div class="profile-checkbox clearfix">
+<p><b>Change your role</b></p>
+<div class="checkbox-wrapper">
+{% render_field form.is_gamer id="gamer-checkbox" class="form-checkbox profile-checkbox one" onclick="return false;" %}
+<label class="option" for="gamer-checkbox">Gamer</label>
+</div>
+<div class="checkbox-wrapper">
+{% render_field form.is_developer id="dev-checkbox" class="form-checkbox profile-checkbox two" %}
+<label class="option" for="dev-checkbox">Developer</label>
+</div>
+</div>
+
+<div class="wrapper-profile">
+<input type="submit" value="Submit" class="form-submit button special" />
+<a href="/" class="button alt" title="To Front page">Your Dashboard</a>
+</div>
+
+</div>
+</form>
+
+</div>
+</div>
+<script>
+
+if ($("#dev-checkbox").is(':checked')){
+    $("#dev-checkbox").prop("disabled", true);
+}
+
+document.getElementById("profile-file").onchange = function () {
+    document.getElementById("uploadFile").value = this.files[0].name;
+};
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My game</title>
+  <meta name="description" content="Rock, paper, scissors, lizard, or Spock">
+  <link rel="stylesheet" href="my-game.css" />
+</head>
+<body>
+<div id="page-mygame" class="page">
+<div id="content" class="mygame">
+<h1>Rock, paper, scissors, lizard, or Spock</h1>
+<p>Choose rock, paper, scissors, lizard, or Spock</p>
+    
+<input type="button" id="rock" class="game-button" value="Rock" onclick="GetButtonValue(this.id)">
+<input type="button" id="paper" class="game-button" value="Paper" onclick="GetButtonValue(this.id)">
+<input type="button" id="scissors" class="game-button" value="Scissors" onclick="GetButtonValue(this.id)">
+<input type="button" id="lizard" class="game-button" value="Lizard" onclick="GetButtonValue(this.id)">
+<input type="button" id="spock" class="game-button" value="Spock" onclick="GetButtonValue(this.id)">
+
+<p id="user-choice"></p> 
+<p id="computer-choice"></p> 
+<p id="game-result"></p> 
+    
+    
+</div>
+</div>
+<script src="my-game.js"></script>
+</body>
+</html>

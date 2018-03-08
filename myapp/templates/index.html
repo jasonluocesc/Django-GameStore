@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+    {% block title %}Main page{% endblock %}
+    {% block metadescription%}Welcome to World Games!{% endblock metadescription %}
+{% block content %}
+{% load static %}
+
+<div id="page-main" class="page">
+<div id="content" class="page-main">
+
+{% if user.is_authenticated %}
+{% include "user.html" %}
+{% else %}
+<h1>Welcome to World games!</h1>
+{% endif %}
+
+<form id="search-games" method='post' class="search-games clearfix">
+{% csrf_token %}
+<h2>Search for games</h2>
+<input type="search" name="game-search" class="search-input" size="60" placeholder="Search here" value = "{{keyword}}" autocomplete="OFF">
+<button id="search-button">Search</button>
+</form>
+
+
+{% if not user.is_authenticated %}
+<div id="game-list" class="game-list clearfix">
+<h2>We have a lot of games here! Check them out...</h2>
+
+    {% if games %}
+        {% for game in games %}
+            {% include "game.html" %}
+        {% endfor %}
+
+    {% else %}
+            <strong>There are no games present.</strong>
+    {% endif %}
+</div>
+{% else %}
+<div id="game-list" class="game-list clearfix">
+<h2>Your games</h2>
+
+    {% if games %}
+        {% for game in games %}
+            {% include "game.html" %}
+        {% endfor %}
+
+    {% else %}
+            <strong>You don't have any games with these keywords in you library.</strong>
+    {% endif %}
+</div>
+
+<div id="game-list-search" class="game-list-search clearfix">
+<h2>{% if keyword %} Here are some games that match your criteria {% else %} Discover new games {% endif %}</h2>
+    {% if newgames %}
+        {% for game in newgames %}
+            {% include "game.html" %}
+        {% endfor %}
+
+    {% else %}
+            <strong>There are no games present.</strong>
+    {% endif %}
+</div>
+
+
+{% endif %}
+
+
+
+</div>
+
+</div>
+{% endblock %}

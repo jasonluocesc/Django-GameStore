@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Logout{% endblock %}
+{% block metadescription%}Logout to the World Games{% endblock metadescription %}
+{% block header %}
+{% endblock %}
+{% block content %}
+{% load static %}
+<div id="page-logout" class="page">
+<div id="content" class="login-signup">
+<div class="form-top">
+<img src="{% static 'assets/css/images/game-icon.png' %}" alt="Logo" class="logo-form" />
+<h1>World Games</h1>
+</div>
+
+<div id="logout-text">
+<p>
+You have successfully logged out.
+</p>
+<a href="/" title="To Front page" class="to-front-page">To Front page</a>    
+</div>    
+</div>
+</div>
+{% endblock %}

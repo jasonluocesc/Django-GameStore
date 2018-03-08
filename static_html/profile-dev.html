@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Profile Settings</title>
+  <meta name="description" content="Profile settings">
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+<header class="header" id="header">
+<div class="headerwrapper clearfix">
+<div id="header-logo" class="clearfix">
+<a class="logo-link" href="/"><img src="assets/css/images/logo.png" alt="World games logo" class="logo-top" /></a>
+<a class="logo-link" href="/"><h2>World Games</h2></a>
+</div>
+<div id="header-right" class="clearfix">
+<a class="logout-link" href="/logout">Log out</a>
+<p>Welcome, Username!</p>
+</div>
+</div>
+</header>
+<div id="page-profile-settings" class="page">
+<div id="content" class="profile-settings">
+<h1>Profile's Settings</h1>
+<form accepted-charset="UTF-8" method="post" id="form-settings" class="webform-profile">
+<div class="wrapper">
+<h3>Change your account details here</h3>
+<input type="text" name="username" class="profile-input" size="60" placeholder="New Username" autocomplete="OFF">
+<input type="email" name="email" class="profile-input" size="60" placeholder="New Email" autocomplete="OFF">
+<input type="password" name="pass" class="profile-input" size="60" placeholder="New Password" autocomplete="OFF">
+<input type="password" name="pass-repeat" class="profile-input" size="60" placeholder="Repeat Password" autocomplete="OFF">   
+<p><b>You can add a profile photo here</b></p>
+<input type="file" id="profile-file" name="file">
+<label for="profile-file" class="clearfix">Choose a file to upload</label>
+<textarea rows="4" cols="50" placeholder="Add some self-description"></textarea>    
+    
+<div class="profile-checkbox clearfix">
+<p><b>Change your role</b></p>
+<div class="checkbox-wrapper">
+<input id="profile-checkbox-1" class="form-checkbox profile-checkbox one" type="checkbox" name="Gamer" value="Gamer" checked> 
+<label class="option" for="profile-checkbox-1">Gamer</label>
+</div>
+<div class="checkbox-wrapper">
+<input id="profile-checkbox-2" class="form-checkbox profile-checkbox two" type="checkbox" name="Developer" value="Developer"> 
+<label class="option" for="profile-checkbox-2">Developer</label>
+</div>
+</div>
+    
+<div class="wrapper-profile">
+<input type="submit" value="Submit" class="form-submit button special">
+</div>
+    
+</div>
+</form>
+ 
+</div>
+</div>
+
+</body>
+</html>
