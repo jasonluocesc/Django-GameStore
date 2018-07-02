@@ -1,3 +1,7 @@
+
+Test user:Cat, 
+Test password:wsd-2017
+
 # Final Submission
 
 [Deployed APP](https://worldgames-wsd2017.herokuapp.com/)
